@@ -1,0 +1,224 @@
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  width: 65%;
+  position: relative;
+  margin: 25px auto 0;
+}
+
+.searchBar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchBar input {
+  background-color: #e8e9eb;
+  border-radius: 35px;
+  height: 35px;
+  width: 100%;
+  outline: none;
+  border: 1.5px solid transparent;
+  padding-left: 45px;
+}
+.searchBar input:focus {
+  border-color: red;
+}
+.searchBar .icon-search {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.setting-wrapper {
+  position: relative;
+}
+.clickedSettings {
+  border: 1px solid black;
+  position: absolute;
+  width: 120px;
+  top: 100%;
+  margin-top: 10px;
+}
+.settings {
+  height: 40px;
+  width: 40px;
+  padding: auto;
+  background-color: #e8e9eb;
+  border-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.settings:hover {
+  border-color: red;
+}
+.xyz {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.icons-weather {
+  display: grid;
+  width: 65%;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 50px;
+  row-gap: 25px;
+  margin-top: 20px;
+}
+.rain-chances-icons {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 2px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.currentTemp-main-div {
+  display: flex;
+  align-items: center;
+  width: 65%;
+  margin: 10px auto;
+  justify-content: flex-start;
+}
+.sun-animation {
+  margin-right: 100px;
+  height: 150px;
+  width: 150px;
+}
+.currentTempInCelsius {
+  width: 100px;
+  font-size: 80px;
+}
+.alerts {
+  color: #6c757d;
+}
+.arrow-downward,
+.arrow-upward {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #e8e9eb;
+}
+.min-div,
+.max-div {
+  display: flex;
+}
+.min-div {
+  margin-right: 30px;
+}
+.min-deg,
+.max-deg {
+  display: flex;
+  flex-direction: column;
+}
+.min-max-font {
+  font-size: 30px;
+}
+.min-max-color {
+  color: #6c757d;
+}
+.min-max-container {
+  display: flex;
+  margin-left: auto;
+}
+.hourly-weather {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 65%;
+  margin: 10px auto;
+}
+.animation {
+  height: 130px;
+  width: 130px;
+  margin: auto 10px;
+}
+.hourly-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 65%;
+  margin: 0 auto;
+  gap: 10px;
+  overflow-x: auto;
+}
+.hour-border {
+  background-color: #e8e9eb;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 15px;
+  width: 100%;
+}
+.weekly-container {
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 65%;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.days {
+  display: flex;
+
+  background-color: #e8e9eb;
+  border-radius: 15px;
+
+  height: 150px;
+  box-sizing: border-box;
+}
+.dates,
+.temp {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+.max-deee {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+  margin-left: 25px;
+  row-gap: 5px;
+}
+.date {
+  font-weight: bold;
+  font-size: large;
+}
+.date-font,
+.min {
+  color: #6c757d;
+}
+.deg-font {
+  font-size: 40px;
+}
