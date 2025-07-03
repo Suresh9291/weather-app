@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import sunAnimation from "../assets/animations/sun-animation.json";
 
-const CurrentTemp = ({ city }) => {
-  const [weather, setWeather] = useState(null);
-
+const CurrentTemp = ({ city, weather, setWeather }) => {
   const fetchWeather = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=da96d3f55a3e6963efe758dad659e35b&units=metric`
@@ -35,7 +33,9 @@ const CurrentTemp = ({ city }) => {
           </div>
 
           <div style={{ marginRight: "40px" }}>
-            <h1>{weather.name}</h1>
+            <h1>
+              {weather.name} {weather.sys.countrys}
+            </h1>
           </div>
 
           <div>

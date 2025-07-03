@@ -13,19 +13,19 @@ import {
   CircleArrowUp,
   Gauge,
 } from "lucide-react";
-const WeatherInfo = () => {
-  const [tempParameter, settempParameter] = useState([
-    {
-      rain: "0%",
-      wind: "311km/h",
-      Sunrise: "6.12 AM",
-      Sunset: "7:30 PM",
-      uvIndex: "1.2",
-      Pressure: "952 hPa",
-      Humidity: "98%",
-      Guests: "452 km/h",
-    },
-  ]);
+const WeatherInfo = ({ weather }) => {
+  // const [tempParameter, settempParameter] = useState([
+  //   {
+  //     rain: "0%",
+  //     wind: "311km/h",
+  //     Sunrise: "6.12 AM",
+  //     Sunset: "7:30 PM",
+  //     uvIndex: "1.2",
+  //     Pressure: "952 hPa",
+  //     Humidity: "98%",
+  //     Guests: "452 km/h",
+  //   },
+  // ]);
   return (
     <div className="icons-weather">
       <div className="rain-chances-icons">
@@ -34,10 +34,10 @@ const WeatherInfo = () => {
           <CloudRainWind color="#3a2fca" />
         </div>
 
-        <di className="info ">
+        <div className="info ">
           <div> Rain</div>
-          <div className="percentage">{tempParameter.rain}</div>
-        </di>
+          <div className="percentage"></div>
+        </div>
       </div>
       <div className="rain-chances-icons">
         <div className="icon">
@@ -45,10 +45,10 @@ const WeatherInfo = () => {
           <CircleArrowUp color="#A0D8EF" />
         </div>
 
-        <di className="info ">
+        <div className="info ">
           <div>Wind</div>
-          <div>{tempParameter.wind}</div>
-        </di>
+          <div>{weather?.wind.speed} m/s</div>
+        </div>
       </div>
       <div className="rain-chances-icons">
         <div className="icon">
@@ -56,10 +56,18 @@ const WeatherInfo = () => {
           <Sunrise color="#FFA500" />
         </div>
 
-        <diV className="info ">
+        <div className="info ">
           <div>Sunrise</div>
-          <div>{tempParameter.Sunrise}</div>
-        </diV>
+          <div>
+            {" "}
+            {weather?.sys?.sunrise
+              ? new Date(weather.sys.sunrise * 1000).toLocaleTimeString(
+                  "en-IN",
+                  { hour: "2-digit", minute: "2-digit" }
+                )
+              : "--"}
+          </div>
+        </div>
       </div>
       <div className="rain-chances-icons">
         <div className="icon">
@@ -67,10 +75,17 @@ const WeatherInfo = () => {
           <Sunset color="#FF8C00" />
         </div>
 
-        <diV className="info ">
+        <div className="info ">
           <div>Sunset</div>
-          <div>{tempParameter.Sunset}</div>
-        </diV>
+          <div>
+            {weather?.sys?.sunset
+              ? new Date(weather.sys.sunset * 1000).toLocaleTimeString(
+                  "en-IN",
+                  { hour: "2-digit", minute: "2-digit" }
+                )
+              : "--"}
+          </div>
+        </div>
       </div>
       <div className="rain-chances-icons">
         <div className="icon">
@@ -80,7 +95,7 @@ const WeatherInfo = () => {
 
         <div className="info ">
           <div>UV index</div>
-          <div>{tempParameter.uvIndex}</div>
+          <div></div>
         </div>
       </div>
       <div className="rain-chances-icons">
@@ -91,7 +106,7 @@ const WeatherInfo = () => {
 
         <div className="info ">
           <div>Pressure</div>
-          <div>{tempParameter.Pressure}</div>
+          <div>{weather?.main.pressure} hPA</div>
         </div>
       </div>
       <div className="rain-chances-icons">
@@ -102,7 +117,7 @@ const WeatherInfo = () => {
 
         <div className="info ">
           <div>Humidity</div>
-          <div>{tempParameter.Humidity}</div>
+          <div>{weather?.main?.humidity}% </div>
         </div>
       </div>
       <div className="rain-chances-icons">
@@ -113,7 +128,7 @@ const WeatherInfo = () => {
 
         <div className="info ">
           <div>Guests</div>
-          <div>{tempParameter.Guests}</div>
+          <div>{weather?.wind.gust} m/s</div>
         </div>
       </div>
     </div>
