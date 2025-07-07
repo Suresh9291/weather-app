@@ -14,18 +14,6 @@ import {
   Gauge,
 } from "lucide-react";
 const WeatherInfo = ({ weather }) => {
-  // const [tempParameter, settempParameter] = useState([
-  //   {
-  //     rain: "0%",
-  //     wind: "311km/h",
-  //     Sunrise: "6.12 AM",
-  //     Sunset: "7:30 PM",
-  //     uvIndex: "1.2",
-  //     Pressure: "952 hPa",
-  //     Humidity: "98%",
-  //     Guests: "452 km/h",
-  //   },
-  // ]);
   return (
     <div className="icons-weather">
       <div className="rain-chances-icons">

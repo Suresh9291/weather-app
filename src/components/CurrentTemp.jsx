@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import sunAnimation from "../assets/animations/sun-animation.json";
+import rainAnimation from "../assets/animations/rain-cloud.json";
+import heavyRain from "../assets/animations/cloud-with-lightning.json";
 
 const CurrentTemp = ({ city, weather, setWeather }) => {
   const fetchWeather = () => {
@@ -23,13 +25,29 @@ const CurrentTemp = ({ city, weather, setWeather }) => {
   useEffect(() => {
     fetchWeather();
   }, [city]);
+  const getAnimation = (condition) => {
+    switch (condition) {
+      case "clear":
+        return sunAnimation;
 
+      case "Rain":
+        return rainAnimation;
+      case "Thunderstorm":
+        return heavyRain;
+
+      default:
+        return sunAnimation;
+    }
+  };
   return (
     <div className="currentTemp-main-div">
       {weather ? (
         <>
           <div className="sun-animation">
-            <Lottie animationData={sunAnimation} loop={true} />
+            <Lottie
+              animationData={getAnimation(weather.weather[0].main)}
+              loop={true}
+            />
           </div>
 
           <div style={{ marginRight: "40px" }}>
