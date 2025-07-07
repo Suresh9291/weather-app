@@ -4,7 +4,7 @@ import sunAnimation from "../assets/animations/sun-animation.json";
 import rainAnimation from "../assets/animations/rain-cloud.json";
 import heavyRain from "../assets/animations/cloud-with-lightning.json";
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 const HourlyWeather = ({ city }) => {
   const [hourdata, setHourdata] = useState(null);
 
@@ -28,20 +28,18 @@ const HourlyWeather = ({ city }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // const transformed = data.list.slice(0, 8).map((entry) => ({
-        //   time: entry.dt_txt,
-        //   temp: Math.round(entry.main.temp),
-        //   icon: entry.weather[0].main, // We will map this to animation later
-        //   id: uuidv4(),
-        // }));
-        // const shaped = data.list.slice(0, 8).map(/* shape it */);
-        // setHourdata(shaped);
-        // sethourdata(transformed);
-        setHourdata(data);
+        const transformed = data.list.slice(0, 8).map((entry) => {
+          return {
+            time: entry.dt_txt,
+            temp: Math.round(entry.main.temp),
+            icon: entry.weather[0].main,
+          };
+        });
+        setHourdata(transformed);
       })
 
       .catch((err) => console.log("API-ERROR: ", err));
-  }, []);
+  }, [city]);
 
   return (
     <>
@@ -50,12 +48,11 @@ const HourlyWeather = ({ city }) => {
       </div>
 
       <div className="hourly-container">
-        {hourdata?.list?.slice(0, 8).map((entry, index) => {
-          const icon = entry.weather[0].main;
+        {hourdata?.map((value, index) => {
           return (
             <div className="hour-border" key={index}>
               <span>
-                {new Date(entry.dt_txt).toLocaleTimeString("en-IN", {
+                {new Date(value.time).toLocaleTimeString("en-IN", {
                   hour: "2-digit",
                   minute: "2-digit",
                   hour12: true,
@@ -64,10 +61,13 @@ const HourlyWeather = ({ city }) => {
               <div className="animation">
                 {" "}
                 <span>
-                  <Lottie animationData={getAnimation(icon)} loop={true} />
+                  <Lottie
+                    animationData={getAnimation(value.icon)}
+                    loop={true}
+                  />
                 </span>
               </div>
-              <span>{Math.round(entry.main.temp)}&deg;C</span>
+              <span>{Math.round(value.temp)}&deg;C</span>
             </div>
           );
         })}

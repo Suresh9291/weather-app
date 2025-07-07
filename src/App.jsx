@@ -16,7 +16,6 @@ function App() {
       <CurrentTemp city={city} weather={weather} setWeather={setWeather} />
       <WeatherInfo weather={weather} setWeather={setWeather} />
       <HourlyWeather city={city} />
-      <WeeklyWeather />
     </>
   );
 }
